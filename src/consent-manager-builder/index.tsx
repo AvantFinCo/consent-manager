@@ -312,23 +312,17 @@ export default class ConsentManagerBuilder extends Component<Props, State> {
     this.setState({ preferences })
   }
 
-  handleSaveConsent = (
-    newPreferences: CategoryPreferences | undefined,
-    shouldReload: boolean,
-    devMode?: boolean
-  ) => {
+  handleSaveConsent = (newPreferences: CategoryPreferences | undefined) => {
     const {
-      writeKey,
       cookieDomain,
       cookieName,
       cookieExpires,
       cookieAttributes,
-      mapCustomPreferences,
-      defaultDestinationBehavior
+      mapCustomPreferences
     } = this.props
 
     this.setState(prevState => {
-      const { destinations, preferences: existingPreferences, isConsentRequired } = prevState
+      const { destinations, preferences: existingPreferences } = prevState
 
       let preferences = this.mergePreferences({
         destinations,
@@ -357,13 +351,6 @@ export default class ConsentManagerBuilder extends Component<Props, State> {
 
       const newDestinations = getNewDestinations(destinations, destinationPreferences)
 
-      if (
-        prevState.havePreferencesChanged ||
-        newDestinations.length > 0 ||
-        typeof newPreferences === 'boolean'
-      ) {
-        shouldReload = true
-      }
       savePreferences({
         destinationPreferences,
         customPreferences,
@@ -371,16 +358,6 @@ export default class ConsentManagerBuilder extends Component<Props, State> {
         cookieName,
         cookieExpires,
         cookieAttributes
-      })
-      conditionallyLoadAnalytics({
-        writeKey,
-        destinations,
-        destinationPreferences,
-        isConsentRequired,
-        shouldReload,
-        devMode,
-        defaultDestinationBehavior,
-        categoryPreferences: customPreferences
       })
 
       return {

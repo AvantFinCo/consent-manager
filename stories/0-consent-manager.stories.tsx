@@ -28,24 +28,12 @@ const preferencesDialogTitle = 'Website Data Collection Preferences'
 const preferencesDialogContent = (
   <div>
     <p>
-      Segment uses data collected by cookies and JavaScript libraries to improve your browsing
-      experience, analyze site traffic, deliver personalized advertisements, and increase the
-      overall performance of our site.
-    </p>
-    <p>
-      By using our website, you’re agreeing to our{' '}
-      <a
-        href="https://segment.com/docs/legal/website-data-collection-policy/"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Website Data Collection Policy
-      </a>
-      .
-    </p>
-    <p>
-      The table below outlines how we use this data by category. To opt out of a category of data
-      collection, select “No” and save your preferences.
+      We use data collected by cookies and related technologies for purposes that may include site
+      operation, analytics, enhanced user experience or cross-contextual behavior advertising. In
+      most cases, your opt-out preference will be tracked via a cookie, which means your selection
+      is limited to the specific device and browser you're using during this visit to our website.
+      If you visit this website from a different device or browser, change your browser settings, or
+      if you clear your cookies, you may need to opt out again.
     </p>
   </div>
 )
