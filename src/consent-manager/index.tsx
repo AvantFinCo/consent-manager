@@ -40,15 +40,14 @@ const defaultPreferencesDialogTemplate: PreferenceDialogTemplate = {
       name: 'Functional',
       description:
         'To monitor the performance of our site and to enhance your browsing experience.',
-      example: 'For example, these tools enable you to communicate with us via live chat.'
+      example: ''
     },
     {
       key: 'marketing',
       name: 'Marketing and Analytics',
       description:
         'To understand user behavior in order to provide you with a more relevant browsing experience or personalize the content on our site.',
-      example:
-        'For example, we collect information about which pages you visit to help us present more relevant information.'
+      example: ''
     },
     {
       key: 'advertising',
@@ -56,7 +55,7 @@ const defaultPreferencesDialogTemplate: PreferenceDialogTemplate = {
       description:
         'To personalize and measure the effectiveness of advertising on our site and other websites.',
       example:
-        'For example, we may serve you a personalized ad based on the pages you visit on our site.'
+        'For example, we may serve you a personalized ad based on the pages you visited on our site.'
     },
     {
       key: 'essential',
