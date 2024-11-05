@@ -70,12 +70,6 @@ const ConsentManagerExample = (props: { closeBehavior: CloseBehavior | CloseBeha
       <ConsentManager
         writeKey="tYQQPcY78Hc3T1hXUYk0n4xcbEHnN7r0"
         otherWriteKeys={['vMRS7xbsjH97Bb2PeKbEKvYDvgMm5T3l']}
-        bannerContent={bannerContent}
-        bannerSubContent={bannerSubContent}
-        preferencesDialogTitle={preferencesDialogTitle}
-        preferencesDialogContent={preferencesDialogContent}
-        cancelDialogTitle={cancelDialogTitle}
-        cancelDialogContent={cancelDialogContent}
         closeBehavior={props.closeBehavior}
       />
 
