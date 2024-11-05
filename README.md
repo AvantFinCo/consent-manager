@@ -1,11 +1,15 @@
-# consent-manager [![build status](https://circleci.com/gh/segmentio/consent-manager.svg?style=svg&circle-token=d3a9e0da7a07fb443f1b4e558ad9c60a55dca223)](https://circleci.com/gh/segmentio/consent-manager)
+# Avant Consent Manager
 
+We’ve decided to sunset our Segment contract, so we need to remove all instances and uses of Segment from our website, avant.com. Consequently, we need an alternative consent manager solution to comply with CCPA legislation. The best approach was to fork the tool, remove all Segment platform integrations, and adjust the default styles and text to our specifications, eliminating the need to apply workarounds where it is used.
 
- ## ⚠️ Community ⚠️
+<details>
+<summary>Original README</summary>
+
+## ⚠️ Community ⚠️
+
 This library is community supported. Segment does not manage or update this library. We suggest forking the repo if changes are needed for your project.
 
 We highly recommend using [OneTrust](https://www.onetrust.com/) and Segment's [Consent Manager Wrapper](https://segment.com/docs/privacy/consent-management/consent-in-segment-connections/) to benefit from feature enhancements and ongoing support.
-
 
 > Drop-in consent management plugin for analytics.js
 
@@ -977,3 +981,5 @@ Copyright © 2021, Segment.io, Inc.
 [consentmanager implementation]: src/consent-manager
 [css selector]: https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector
 [here]: https://segment.com/docs/connections/sources/catalog/libraries/website/javascript/identity/
+
+</details>
