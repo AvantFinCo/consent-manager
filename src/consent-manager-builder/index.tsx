@@ -1,5 +1,5 @@
 import { Component } from 'react'
-import { deleteCookiesOnPreferencesChange, loadPreferences, savePreferences } from './preferences
+import { deleteCookiesOnPreferencesChange, loadPreferences, savePreferences } from './preferences'
 
 import {
   Destination,
