@@ -95,6 +95,19 @@ const ActionsBlock = styled('div')`
   }
 `
 
+const CustomeActionsBlock = styled('div')`
+  div.banner-actions {
+    button.manage-cookies {
+      background-color: #0d5bff;
+      color: #fff;
+      border-radius: 0.42em;
+      padding: 0.5em 2em;
+      width: 100%;
+      border: none;
+    }
+  }
+`
+
 const P = styled('p')`
   margin: 0;
   &:not(:last-child) {
@@ -165,12 +178,15 @@ export default class Banner extends PureComponent<BannerProps> {
             </button>
           </P>
         </Content>
-        {typeof actionsBlock === 'function' &&
-          actionsBlock({
-            acceptAll: onAcceptAll,
-            denyAll: onDenyAll,
-            changePreferences: onChangePreferences
-          })}
+        {typeof actionsBlock === 'function' && (
+          <CustomeActionsBlock>
+            {actionsBlock({
+              acceptAll: onAcceptAll,
+              denyAll: onDenyAll,
+              changePreferences: onChangePreferences
+            })}
+          </CustomeActionsBlock>
+        )}
         {actionsBlock === true && (
           <ActionsBlock id="segmentio_actionBlock">
             <GreenButton id="segmentio_allowBtn" type="button" onClick={onAcceptAll}>

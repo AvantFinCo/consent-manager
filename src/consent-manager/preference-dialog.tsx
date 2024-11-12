@@ -74,6 +74,7 @@ interface PreferenceDialogProps {
   marketingDestinations: Destination[]
   advertisingDestinations: Destination[]
   functionalDestinations: Destination[]
+  essentialDestinations: Destination[]
   marketingAndAnalytics?: boolean | null
   advertising?: boolean | null
   functional?: boolean | null
@@ -102,6 +103,7 @@ export default class PreferenceDialog extends PureComponent<PreferenceDialogProp
       advertisingDestinations,
       functionalDestinations,
       marketingAndAnalytics,
+      essentialDestinations,
       advertising,
       functional,
       customCategories,
@@ -272,7 +274,7 @@ export default class PreferenceDialog extends PureComponent<PreferenceDialogProp
                       <p>{essentialInfo?.description}</p>
                       <p>{essentialInfo?.example}</p>
                     </td>
-                    <td css={hideOnMobile} />
+                    <td css={hideOnMobile}>{essentialDestinations.map(d => d.name).join(', ')}</td>
                   </Row>
                 </>
               )}
