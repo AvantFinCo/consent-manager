@@ -46,6 +46,7 @@ interface StandaloneConsentManagerParams {
   inEU: () => boolean
   preferences: PreferencesManager
   inRegions: (regions: string[]) => () => boolean
+  removeCookie?: (name: string, domain: string) => void
 }
 
 export interface Preferences {

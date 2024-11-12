@@ -47,6 +47,60 @@ export function onPreferencesSaved(listener: (prefs: Preferences) => void) {
   emitter.on('preferencesSaved', listener)
   return () => emitter.off('preferencesSaved', listener)
 }
+type CookieConsentChoices = [string, string[], string?, (() => void)?][]
+
+interface WindowWithCookiesList extends Window {
+  cookieConsentChoices?: CookieConsentChoices | undefined
+}
+
+function shouldRemoveCookie(preference: string, preferences: Preferences): boolean {
+  switch (preference) {
+    case 'advertising':
+      return preferences.customPreferences?.advertising === false
+    case 'functional':
+      return preferences.customPreferences?.functional === false
+    case 'marketingAndAnalytics':
+      return preferences.customPreferences?.marketingAndAnalytics === false
+    default:
+      return false
+  }
+}
+
+export function deleteCookiesOnPreferencesChange(preferences: Preferences, initial = false) {
+  const wd = window as WindowWithCookiesList
+
+  if (!wd.cookieConsentChoices) {
+    return
+  }
+  const cookiesNames = Object.keys(cookies.get())
+  wd.cookieConsentChoices.forEach(([preference, names, domain, callback]) => {
+    if (!preference || !names) {
+      return
+    }
+
+    if (!domain) {
+      domain = topDomain(window.location.href)
+    }
+    let shouldReload = false
+    names.forEach(name => {
+      let cookiesRemoved = 0
+      const matchingNames = cookiesNames.filter(cookieName => cookieName.startsWith(name))
+      matchingNames.forEach(cookieName => {
+        if (shouldRemoveCookie(preference, preferences)) {
+          cookies.remove(cookieName, { domain })
+          shouldReload = true
+          cookiesRemoved++
+        }
+      })
+      if (callback && cookiesRemoved > 0) {
+        callback()
+      }
+    })
+    if (shouldReload && !initial) {
+      window.location.reload()
+    }
+  })
+}
 
 export function savePreferences({
   destinationPreferences,
@@ -77,6 +131,8 @@ export function savePreferences({
     domain,
     ...cookieAttributes
   })
+
+  deleteCookiesOnPreferencesChange({ destinationPreferences, customPreferences })
 
   emitter.emit('preferencesSaved', {
     destinationPreferences,

@@ -16,8 +16,7 @@ type Nav = Navigator & {
 }
 
 export function doNotTrack(): boolean | null {
-  
-  if (typeof window !== 'undefined' && (window.navigator || navigator)) { 
+  if (typeof window !== 'undefined' && (window.navigator || navigator)) {
     const nav = navigator as Nav
 
     let doNotTrackValue = nav.doNotTrack || window.doNotTrack || nav.msDoNotTrack

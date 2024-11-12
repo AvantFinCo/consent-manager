@@ -1,7 +1,6 @@
 import { Component } from 'react'
-import { loadPreferences, savePreferences } from './preferences'
-import fetchDestinations from './fetch-destinations'
-import conditionallyLoadAnalytics from './analytics'
+import { deleteCookiesOnPreferencesChange, loadPreferences, savePreferences } from './preferences'
+
 import {
   Destination,
   CategoryPreferences,
@@ -214,21 +213,17 @@ export default class ConsentManagerBuilder extends Component<Props, State> {
 
   initialise = async () => {
     const {
-      writeKey,
-      otherWriteKeys = ConsentManagerBuilder.defaultProps.otherWriteKeys,
       shouldRequireConsent = ConsentManagerBuilder.defaultProps.shouldRequireConsent,
       initialPreferences,
       mapCustomPreferences,
       defaultDestinationBehavior,
       cookieName,
-      cdnHost = ConsentManagerBuilder.defaultProps.cdnHost,
-      shouldReload = ConsentManagerBuilder.defaultProps.shouldReload,
-      devMode = ConsentManagerBuilder.defaultProps.devMode,
       useDefaultCategories = ConsentManagerBuilder.defaultProps.useDefaultCategories
     } = this.props
 
     // TODO: add option to run mapCustomPreferences on load so that the destination preferences automatically get updated
     let { destinationPreferences, customPreferences } = loadPreferences(cookieName)
+    deleteCookiesOnPreferencesChange({ destinationPreferences, customPreferences }, true)
     const [isConsentRequired, destinations] = await Promise.all([
       shouldRequireConsent(),
       fetchDestinations(cdnHost, [writeKey, ...otherWriteKeys])
@@ -265,17 +260,6 @@ export default class ConsentManagerBuilder extends Component<Props, State> {
         ? DEFAULT_CATEGORIES
         : destinationPreferences || initialPreferences
     }
-
-    conditionallyLoadAnalytics({
-      writeKey,
-      destinations,
-      destinationPreferences,
-      isConsentRequired,
-      shouldReload,
-      devMode,
-      defaultDestinationBehavior,
-      categoryPreferences: preferences
-    })
 
     this.setState({
       isLoading: false,

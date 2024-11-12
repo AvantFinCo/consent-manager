@@ -9,10 +9,10 @@ import {
   PreferenceDialogTemplate
 } from '../types'
 
-const zeroValuePreferences: CategoryPreferences = {
-  marketingAndAnalytics: null,
-  advertising: null,
-  functional: null
+const defaultCategoryPreferences: CategoryPreferences = {
+  marketingAndAnalytics: true,
+  advertising: true,
+  functional: true
 }
 
 const defaultPreferencesDialogTemplate: PreferenceDialogTemplate = {
@@ -229,7 +229,7 @@ export default class ConsentManager extends PureComponent<ConsentManagerProps, {
     }
 
     if (!customCategories) {
-      return zeroValuePreferences
+      return defaultCategoryPreferences
     }
 
     const initialCustomPreferences = {}
