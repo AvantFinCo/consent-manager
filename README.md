@@ -2,6 +2,31 @@
 
 We’ve decided to sunset our Segment contract, so we need to remove all instances and uses of Segment from our website, avant.com. Consequently, we need an alternative consent manager solution to comply with CCPA legislation. The best approach was to fork the tool, remove all Segment platform integrations, and adjust the default styles and text to our specifications, eliminating the need to apply workarounds where it is used.
 
+## usage
+
+```js
+window.consentManagerConfig = function(exports) {
+  exports.preferences.onPreferencesSaved(preferences => {
+    // Do somehting with the preferences
+  })
+
+  return {
+    container: '#__segmentConsentManager' // The container where the consent manager will be rendered
+  }
+}
+
+// register cookies to be deleted when consent is revoked
+window.cookieConsentChoices = window.cookieConsentChoices || []
+window.cookieConsentChoices.push([
+  'marketingAndAnalytics',
+  ['cookie_name'],
+  'domain.com',
+  () => {
+    // callback
+  }
+])
+```
+
 <details>
 <summary>Original README</summary>
 
