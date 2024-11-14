@@ -27,6 +27,15 @@ window.cookieConsentChoices.push([
 ])
 ```
 
+## Deployment
+
+Right now, the deployment is done manually by copying the files from the standalone folder after building and then uploading them to this S3 bucket: s3://avant-global-prd-avant-apply/consent-manager/
+
+```
+yarn run build
+aws s3 cp standalone/ s3://avant-global-prd-avant-apply/consent-manager/ --recursive
+```
+
 <details>
 <summary>Original README</summary>
 
