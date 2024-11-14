@@ -1,7 +1,7 @@
 // TODO: remove duplicate cookie library from bundle
 import cookies, { CookieAttributes } from 'js-cookie'
 import topDomain from '@segment/top-domain'
-import { WindowWithAJS, Preferences, CategoryPreferences } from '../types'
+import { Preferences, CategoryPreferences } from '../types'
 import { EventEmitter } from 'events'
 
 const DEFAULT_COOKIE_NAME = 'tracking-preferences'
@@ -102,6 +102,14 @@ export function deleteCookiesOnPreferencesChange(preferences: Preferences, initi
   })
 }
 
+function matchDestinationsToCurrentCookieValue(preferences: CategoryPreferences | undefined) {
+  return {
+    'Facebook Pixel': preferences?.advertising,
+    'Google AdWords New': preferences?.advertising,
+    Heap: preferences?.marketingAndAnalytics
+  }
+}
+
 export function savePreferences({
   destinationPreferences,
   customPreferences,
@@ -110,19 +118,11 @@ export function savePreferences({
   cookieExpires,
   cookieAttributes = {}
 }: SavePreferences) {
-  const wd = window as WindowWithAJS
-  if (wd.analytics) {
-    wd.analytics.identify({
-      destinationTrackingPreferences: destinationPreferences,
-      customTrackingPreferences: customPreferences
-    })
-  }
-
   const domain = cookieDomain || topDomain(window.location.href)
   const expires = cookieExpires || COOKIE_DEFAULT_EXPIRES
   const value = {
     version: 1,
-    destinations: destinationPreferences,
+    destinations: matchDestinationsToCurrentCookieValue(customPreferences),
     custom: customPreferences
   }
 
