@@ -8,6 +8,7 @@ import {
   ConsentManagerProps,
   PreferenceDialogTemplate
 } from '../types'
+import { loadPreferences } from '../consent-manager-builder/preferences'
 
 const defaultCategoryPreferences: CategoryPreferences = {
   marketingAndAnalytics: true,
@@ -66,12 +67,18 @@ const defaultPreferencesDialogTemplate: PreferenceDialogTemplate = {
     }
   ]
 }
+
+function shouldRequireConsent() {
+  const cookieValue = loadPreferences()
+  return Object.keys(cookieValue).length === 0
+}
+
 export default class ConsentManager extends PureComponent<ConsentManagerProps, {}> {
   static displayName = 'ConsentManager'
 
   static defaultProps = {
     otherWriteKeys: [],
-    shouldRequireConsent: () => true,
+    shouldRequireConsent,
     implyConsentOnInteraction: false,
     onError: undefined,
     cookieDomain: undefined,
