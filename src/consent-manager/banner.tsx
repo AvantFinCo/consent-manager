@@ -173,7 +173,12 @@ export default class Banner extends PureComponent<BannerProps> {
         <Content asModal={asModal} id="segmentio_fragmentBanner">
           <P id="segmentio_pContent">{content}</P>
           <P id="segmentio_pSubContent">
-            <button type="button" id="segmentio_subContentBtn" onClick={onChangePreferences}>
+            <button
+              type="button"
+              id="segmentio_subContentBtn"
+              aria-label="Sub content"
+              onClick={onChangePreferences}
+            >
               {subContent}
             </button>
           </P>
@@ -189,10 +194,20 @@ export default class Banner extends PureComponent<BannerProps> {
         )}
         {actionsBlock === true && (
           <ActionsBlock id="segmentio_actionBlock">
-            <GreenButton id="segmentio_allowBtn" type="button" onClick={onAcceptAll}>
+            <GreenButton
+              id="segmentio_allowBtn"
+              aria-label="Allow all"
+              type="button"
+              onClick={onAcceptAll}
+            >
               Allow all
             </GreenButton>
-            <DefaultButton id="segmentio_denyBtn" type="button" onClick={onDenyAll}>
+            <DefaultButton
+              id="segmentio_denyBtn"
+              aria-label="Deny all"
+              type="button"
+              onClick={onDenyAll}
+            >
               Deny all
             </DefaultButton>
           </ActionsBlock>

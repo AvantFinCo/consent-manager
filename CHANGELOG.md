@@ -1,5 +1,9 @@
 # Changelog
 
+## 5.8.2 (Apr 3, 2025)
+
+- [placeholder](placeholder) Added aria-label to button for accessibility
+
 ## 5.8.1 (May 30, 2023)
 
 - [333](https://github.com/segmentio/consent-manager/pull/333) Allows setting the initial value of preferences to `N/A`.

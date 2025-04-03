@@ -89,7 +89,12 @@ export default class ConsentManager extends PureComponent<ConsentManagerProps, {
     bannerActionsBlock: ({ changePreferences }) => {
       return (
         <div className="banner-actions">
-          <button type="submit" className="manage-cookies" onClick={changePreferences}>
+          <button
+            type="submit"
+            className="manage-cookies"
+            aria-label="Manage cookies"
+            onClick={changePreferences}
+          >
             Manage Cookies
           </button>
         </div>
