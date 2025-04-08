@@ -173,7 +173,12 @@ export default class Banner extends PureComponent<BannerProps> {
         <Content asModal={asModal} id="segmentio_fragmentBanner">
           <P id="segmentio_pContent">{content}</P>
           <P id="segmentio_pSubContent">
-            <button type="button" id="segmentio_subContentBtn" onClick={onChangePreferences}>
+            <button
+              type="button"
+              id="segmentio_subContentBtn"
+              aria-label="Sub content"
+              onClick={onChangePreferences}
+            >
               {subContent}
             </button>
           </P>
