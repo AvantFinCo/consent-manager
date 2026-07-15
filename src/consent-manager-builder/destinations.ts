@@ -1,14 +1,5 @@
 export const DESTINATIONS = [
   {
-    id: 'Heap',
-    name: 'Heap',
-    description:
-      'Heap is an analytics tool that automatically tracks all of the actions your users perform just by flipping a switch, instead of after adding custom tracking code.',
-    website: 'http://heapanalytics.com',
-    category: 'Analytics',
-    creationName: 'Heap'
-  },
-  {
     id: 'Datadog',
     name: 'Datadog',
     description:
