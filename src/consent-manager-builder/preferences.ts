@@ -105,7 +105,9 @@ export function deleteCookiesOnPreferencesChange(preferences: Preferences, initi
 function matchDestinationsToCurrentCookieValue(preferences: CategoryPreferences | undefined) {
   return {
     'Facebook Pixel': preferences?.advertising,
-    'Google AdWords New': preferences?.advertising
+    'Google AdWords New': preferences?.advertising,
+    Heap: preferences?.marketingAndAnalytics,
+    Mixpanel: preferences?.marketingAndAnalytics
   }
 }
 

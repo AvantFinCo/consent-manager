@@ -47,7 +47,7 @@ const defaultPreferencesDialogTemplate: PreferenceDialogTemplate = {
       key: 'marketing',
       name: 'Marketing and Analytics',
       description:
-        'To understand user behavior in order to provide you with a more relevant browsing experience or personalize the content on our site.',
+        'To understand user behavior in order to provide you with a more relevant browsing experience or personalize your experience.',
       example: ''
     },
     {
