@@ -646,7 +646,7 @@ The values for `integrations` should be an integration's creationName (`integrat
       key: 'marketing',
       name: 'Marketing and Analytics',
       description:
-        'To understand user behavior in order to provide you with a more relevant browsing experience or personalize the content on our site.',
+        'To understand user behavior in order to provide you with a more relevant browsing experience or personalize your experience.',
       example:
         'For example, we collect information about which pages you visit to help us present more relevant information.'
     },

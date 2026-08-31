@@ -1,5 +1,14 @@
 export const DESTINATIONS = [
   {
+    id: 'Heap',
+    name: 'Heap',
+    description:
+      'Heap is an analytics tool that automatically tracks all of the actions your users perform just by flipping a switch, instead of after adding custom tracking code.',
+    website: 'http://heapanalytics.com',
+    category: 'Analytics',
+    creationName: 'Heap'
+  },
+  {
     id: 'Datadog',
     name: 'Datadog',
     description:
@@ -7,6 +16,15 @@ export const DESTINATIONS = [
     website: 'http://datadoghq.com',
     category: 'Analytics',
     creationName: 'Datadog'
+  },
+  {
+    id: 'Mixpanel',
+    name: 'Mixpanel',
+    description:
+      'Mixpanel is an event tracking tool that measures how users interact with your product, with features for funnel, retention and user analysis.',
+    website: 'http://mixpanel.com',
+    category: 'Analytics',
+    creationName: 'Mixpanel'
   },
   {
     id: 'Google Analytics',
