@@ -112,7 +112,7 @@ export default class ConsentManager extends PureComponent<ConsentManagerProps, {
     bannerContent: (
       <span>
         This site uses cookies and related technologies, as described in our{' '}
-        <a href="/privacy-policy/" target="_blank">
+        <a href="https://www.avant.com/privacy-policy" target="_blank">
           General privacy policy
         </a>
         , for purposes that may include site operation, analytics, enhanced user experience, or
